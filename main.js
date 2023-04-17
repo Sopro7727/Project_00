@@ -18,10 +18,6 @@ class Player{
 			this.attributes[key] = attributesValue;
 			//console.log(this.attributes)
 		}
-	};
-
-	rollAttributes(){
-		console.log('Rolling dice...');
 	}
 
 	printPlayer(){
@@ -32,11 +28,11 @@ class Player{
 	}
 
 	rollAttributes(){
-		for( const key in this.attributes){
+		for(const key in this.attributes){
 			let results = diceRoller(4,6);
-			results.sort(function(a,b){return a-b});
-			results.shift();
-			let sum = sumArrayElements(results);
+			results.sort(function(a,b){return a-b}); //numeric sort w/ compare function
+			results.shift(); // remove lowest die roll
+			let sum = sumArrayElements(results); // sum the rolls
 			this.attributes[key] = sum;
 		}
 	}
